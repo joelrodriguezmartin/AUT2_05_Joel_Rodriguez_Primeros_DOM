@@ -5,22 +5,27 @@
 <script src="CalculatePI.js"></script>
 <script type="text/javascript">
 function calcular() {
-    originalDate = Date.now();
+    
     for (let i = 0; i <= 60; i++){
+        //Generacion de elementos DOM
         let newRow = document.createElement("tr");//Creamos un elemento tr
-        let newCell1 = document.createElement("td");//Creamos un td
-        let newCell2 = document.createElement("td");//Creamos un td
-        let newCell3 = document.createElement("td");//Creamos un td
+        let newCell1 = document.createElement("td");//Creamos un tds
+        let newCell2 = document.createElement("td");
+        let newCell3 = document.createElement("td");
+        
+        //Calculo
+        let originalDate = Date.now(); //Obtenemos los ms antes de el calculo
+        let pi = new CalculatePi(i).name;//Calculamos pi
+        newCell2.innerHTML = Date.now() - originalDate + " ms" //Calculamos la diferencia de ms después del calculo y añadimos a segundo td
+        newCell3.innerHTML = pi;//Añadimos pi al tercer td
+        
+        //Manipulación de elementos DOM
         let table = document.getElementById("tabla");//Seleccionamos el nodo tabla
-        newCell1.innerHTML = "Tiempo para " + i + " elementos: ";//Le añadimos texto
-        let pi = new CalculatePi(i).name;
-        newCell2.innerHTML = Date.now() - originalDate + " ms"
-        newCell3.innerHTML = pi;
-        newRow.appendChild(newCell1);//Añadimos la celda a la fila
-        newRow.appendChild(newCell2);//Añadimos la celda a la fila
-        newRow.appendChild(newCell3);//Añadimos la celda a la fila
-        table.appendChild(newRow);//Le añadimos el elemento creado a la tabla*/
-        originalDate = Date.now();
+        newCell1.innerHTML = "Tiempo para " + i + " elementos: "; //Añadimos texto al primer td
+        newRow.appendChild(newCell1);//Añadimos las celda a la fila
+        newRow.appendChild(newCell2);
+        newRow.appendChild(newCell3);
+        table.appendChild(newRow);//Le añadimos los elementos a la tabla
     }
 }
 </script>
