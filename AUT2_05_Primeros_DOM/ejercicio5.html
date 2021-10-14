@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Ejercicio 5 - DOM</title>
+<script src="CalculatePI.js"></script>
+<script type="text/javascript">
+function calcular() {
+    originalDate = Date.now();
+    for (let i = 0; i <= 60; i++){
+        let newRow = document.createElement("tr");//Creamos un elemento tr
+        let newCell1 = document.createElement("td");//Creamos un td
+        let newCell2 = document.createElement("td");//Creamos un td
+        let newCell3 = document.createElement("td");//Creamos un td
+        let table = document.getElementById("tabla");//Seleccionamos el nodo tabla
+        newCell1.innerHTML = "Tiempo para " + i + " elementos: ";//Le añadimos texto
+        let pi = new CalculatePi(i).name;
+        newCell2.innerHTML = Date.now() - originalDate + " ms"
+        newCell3.innerHTML = pi;
+        newRow.appendChild(newCell1);//Añadimos la celda a la fila
+        newRow.appendChild(newCell2);//Añadimos la celda a la fila
+        newRow.appendChild(newCell3);//Añadimos la celda a la fila
+        table.appendChild(newRow);//Le añadimos el elemento creado a la tabla*/
+        originalDate = Date.now();
+    }
+}
+</script>
+</head>
+<body>
+<table id="tabla" border = "1">
+    
+</table>
+<input type="button" value="Calcular" onclick="calcular();">
+
+</body></html>

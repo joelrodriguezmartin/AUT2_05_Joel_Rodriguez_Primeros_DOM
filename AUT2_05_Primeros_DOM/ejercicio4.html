@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Ejercicio 4 - DOM</title>
+<script type="text/javascript">
+function anade() {
+    let newRow = document.createElement("tr");//Creamos un elemento tr
+    let newCell = document.createElement("td");//Creamos un td
+    let table = document.getElementById("tabla");//Seleccionamos el nodo tabla
+    newCell.innerHTML = "Nuevo Elemento";//Le añadimos texto
+    newRow.appendChild(newCell);//Añadimos la celda a la fila
+    table.appendChild(newRow);//Le añadimos el elemento creado a la tabla
+}
+</script>
+</head>
+<body>
+<table id="tabla" border = "1">
+    <tr><td>UNO</td></tr>
+    <tr><td>DOS</td></tr>
+    <tr><td>TRES</td></tr>
+</table>
+<input type="button" value="Añadir elemento" onclick="anade();">
+
+
+</body></html>
