@@ -11,12 +11,14 @@ Mediante la navegación de los elementos del DOM debes averiguar:
     Todas las respuestas debes añadirlas en la sección "información"*/
 
 function linksenpagina(){
-    alert(document.getElementsByTagName("a").length);//Seleccionamos los elementos con tag a y los contamos.
+    let informacion = document.getElementById("informacion");//Seleccionamos el elemento información
+    informacion.innerHTML+="Numero de links en la pagina = " + document.getElementsByTagName("a").length + "<br>"//Le añadimos la info
 }
 function direccionpenultimo(){
     let elements = document.getElementsByTagName("a");//Seleccionamos los elementos con tag a.
     penultimo = elements[elements.length-2]//El elemento en posicion -2 es el penúltimo del array.
-    alert(penultimo.href);//Mostramos el href del penultimo elemento
+    let informacion = document.getElementById("informacion");//Seleccionamos el elemento información
+    informacion.innerHTML+="Direccion del penultimo link = " + penultimo.href + "<br>";//Le añadimos la info
 }
 function numeroenlacesprueba(){
     let elements = document.getElementsByTagName("a");//Seleccionamos los links
@@ -27,10 +29,12 @@ function numeroenlacesprueba(){
             count++;
         }
     }
-    alert(count);
+    let informacion = document.getElementById("informacion");//Seleccionamos el elemento información
+    informacion.innerHTML+="Numero de enlaces a http://prueba/= " + count + "<br>";//Le añadimos la info
 }
 function enlacestercerparrafo(){
     let tercerParrafo = document.getElementsByTagName("p")[2];//Seleccionamos el indice 2 del array de "p" (tercer elemento)
     let numeroEnlaces = tercerParrafo.getElementsByTagName("a").length;//De ese elemento seleccionamos los "a" y contamos cuantos hay
-    alert(numeroEnlaces);
+    let informacion = document.getElementById("informacion");//Seleccionamos el elemento información
+    informacion.innerHTML+="Cantidad de enlaces en el tercer parrafo = " + numeroEnlaces + "<br>";//Le añadimos la info
 }
