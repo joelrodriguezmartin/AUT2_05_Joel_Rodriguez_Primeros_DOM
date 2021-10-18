@@ -1,25 +1,91 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 
-<title>Ejercicio 4 - DOM</title>
-<script type="text/javascript">
-function anade() {
-    let newRow = document.createElement("tr");//Creamos un elemento tr
-    let newCell = document.createElement("td");//Creamos un td
-    let table = document.getElementById("tabla");//Seleccionamos el nodo tabla
-    newCell.innerHTML = "Nuevo Elemento";//Le añadimos texto
-    newRow.appendChild(newCell);//Añadimos la celda a la fila
-    table.appendChild(newRow);//Le añadimos el elemento creado a la tabla
-}
-</script>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Ejercicio 4 - DOM</title>
+    <script type="text/javascript">
+        function anade() {
+            if (!document.getElementById("cuatro")) {
+                let newRow = document.createElement("tr");//Creamos un elemento tr
+                let newCell = document.createElement("td");//Creamos un td
+                let table = document.getElementById("tabla");//Seleccionamos el nodo tabla
+                newCell.innerHTML = "CUATRO";//Le añadimos texto
+                newCell.id = "3" //Le ponemos el id cuatro
+                newCell.onclick = function () {
+                    swap(this);
+                };
+                newRow.appendChild(newCell);//Añadimos la celda a la fila
+                table.appendChild(newRow);//Le añadimos el elemento creado a la tabla
+            }
+        }
+        function darColor() {
+            let rowList = document.getElementsByTagName("tr");//Esto va por referencia
+            for (let i = 0; i < rowList.length; i++) {
+                if (i % 2 == 0) {
+                    rowList[i].style = "background-color: red;";
+                    rowList[i].addEventListener("mouseover", function (event) {//Se podria hacer con css :hover pero no es muy DOM...
+                        // Evento para cambiar el color al pasar el raton por encima
+                        event.target.style = "background-color: yellow";
+                    });
+                    rowList[i].addEventListener("mouseout", function (event) {
+                        //Evento para volver al color anterior al salir el raton
+                        event.target.style = "background-color: red";
+                    });
+                } else {
+                    rowList[i].style = "background-color: blue";
+                    rowList[i].addEventListener("mouseover", function (event) {
+                        // Evento para cambiar el color al pasar el raton por encima
+                        event.target.style = "background-color: yellow";
+                    });
+                    rowList[i].addEventListener("mouseout", function (event) {
+                        //Evento para volver al color anterior al salir el raton
+                        event.target.style = "background-color: blue";
+                    });
+                }
+
+            }
+        }
+        function swap(element) {
+            let id = parseInt(element.id);//Tenemos el id del elemento que se clicko, que es ademas el indice del array de elementos
+            let cellList = document.getElementsByTagName("td");
+            if (id >= cellList.length - 1) {
+                let aux = cellList[0].innerHTML;//Si es el ultimo lo cambiamos con el primero
+                cellList[0].innerHTML = cellList[id].innerHTML;
+                cellList[id].innerHTML = aux;
+            } else {
+                let aux = cellList[id + 1].innerHTML;//De resto lo cambiamos con el siguiente
+                cellList[id + 1].innerHTML = cellList[id].innerHTML;
+                cellList[id].innerHTML = aux;
+            }
+
+        }
+    </script>
 </head>
+
 <body>
-<table id="tabla" border = "1">
-    <tr><td>UNO</td></tr>
-    <tr><td>DOS</td></tr>
-    <tr><td>TRES</td></tr>
-</table>
-<input type="button" value="Añadir elemento" onclick="anade();">
+    <table id="tabla" border="1">
+        <tr>
+            <td id=0 onclick="swap(this)">UNO</td>
+        </tr>
+        <tr>
+            <td id=1 onclick="swap(this)">DOS</td>
+        </tr>
+        <tr>
+            <td id=2 onclick="swap(this)">TRES</td>
+        </tr>
+    </table>
+    <input type="button" value="Añadir elemento" onclick="anade()">
+    <input type="button" value="Aplicar color" onclick="darColor()">
+    <script type="text/javascript">
+        let lista = document.getElementsByTagName("td");
+        for (let i = 0; i < lista.length; i++) {
+            //TODO no se como hacer esta mierda
+        }
+    </script>
 
 
-</body></html>
+</body>
+
+</html>
